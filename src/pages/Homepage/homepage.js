@@ -22,12 +22,11 @@ export const PlartFormHome =()=>{
             querySnapshot.forEach((doc) => {
                 console.log(doc.data());
                 setUserCredentials({...doc.data(),boardId:doc.id});
+                setTimeout(()=>{
+                    setIsLoading(false);
+                },[2000])
             }) 
         })
-        setTimeout(()=>{
-            setIsLoading(false);
-        },[2000])
-        
         return ()=>{unsubscribe()}
     },[user.email]);
 

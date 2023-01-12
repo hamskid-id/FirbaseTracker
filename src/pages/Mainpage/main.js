@@ -28,6 +28,9 @@ export const PlartFormLaunch =()=>{
         let unsubscribe = onSnapshot(q,(querySnapshot)=>{
             querySnapshot.forEach((doc) => {
                 setUserCredentials({...doc.data(),boardId:doc.id});
+                setTimeout(()=>{
+                    setIsLoading(false);
+                },[2000])
             }) 
         })
         return ()=>{unsubscribe()}
@@ -39,10 +42,6 @@ export const PlartFormLaunch =()=>{
                 setBoardInformation(bod.tasks);
             }
         })
-        setTimeout(()=>{
-            setIsLoading(false);
-        },[2000])
-        console.log(userCredential)
     },[name,userCredential])
     
     
